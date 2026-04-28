@@ -51,11 +51,6 @@ function Login({ onLogin }) {
           {error && <div className="error">{error}</div>}
           <button type="submit">Ingresar</button>
         </form>
-        <div className="demo-credentials">
-          <p>Credenciales de prueba:</p>
-          <p>Email: admin@novasalud.com</p>
-          <p>Contraseña: admin123</p>
-        </div>
       </div>
     </div>
   );
