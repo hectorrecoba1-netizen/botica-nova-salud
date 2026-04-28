@@ -18,6 +18,46 @@ router.get('/', async (req, res) => {
     }
 });
 
+// Productos con stock bajo (ANTES de /:id)
+router.get('/alertas/stock-bajo', async (req, res) => {
+    try {
+        const [productos] = await db.query(`
+            SELECT p.*, c.nombre as categoria_nombre 
+            FROM productos p 
+            LEFT JOIN categorias c ON p.categoria_id = c.id 
+            WHERE p.stock <= p.stock_minimo AND p.activo = TRUE
+            ORDER BY p.stock ASC
+        `);
+        res.json(productos);
+    } catch (error) {
+        res.status(500).json({ message: 'Error al obtener alertas', error: error.message });
+    }
+});
+
+// Productos más vendidos (ANTES de /:id)
+router.get('/mas-vendidos', async (req, res) => {
+    try {
+        const [productos] = await db.query(`
+            SELECT 
+                p.id,
+                p.nombre,
+                p.precio,
+                c.nombre as categoria_nombre,
+                COALESCE(SUM(dv.cantidad), 0) as total_vendido
+            FROM productos p
+            LEFT JOIN categorias c ON p.categoria_id = c.id
+            LEFT JOIN detalle_ventas dv ON p.id = dv.producto_id
+            WHERE p.activo = TRUE
+            GROUP BY p.id, p.nombre, p.precio, c.nombre
+            ORDER BY total_vendido DESC
+            LIMIT 5
+        `);
+        res.json(productos);
+    } catch (error) {
+        res.status(500).json({ message: 'Error al obtener productos más vendidos', error: error.message });
+    }
+});
+
 // Obtener producto por ID
 router.get('/:id', async (req, res) => {
     try {
@@ -70,22 +110,6 @@ router.delete('/:id', async (req, res) => {
         res.json({ message: 'Producto eliminado exitosamente' });
     } catch (error) {
         res.status(500).json({ message: 'Error al eliminar producto', error: error.message });
-    }
-});
-
-// Productos con stock bajo
-router.get('/alertas/stock-bajo', async (req, res) => {
-    try {
-        const [productos] = await db.query(`
-            SELECT p.*, c.nombre as categoria_nombre 
-            FROM productos p 
-            LEFT JOIN categorias c ON p.categoria_id = c.id 
-            WHERE p.stock <= p.stock_minimo AND p.activo = TRUE
-            ORDER BY p.stock ASC
-        `);
-        res.json(productos);
-    } catch (error) {
-        res.status(500).json({ message: 'Error al obtener alertas', error: error.message });
     }
 });
 

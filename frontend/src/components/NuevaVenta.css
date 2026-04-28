@@ -1,7 +1,14 @@
+.nueva-venta {
+  display: flex;
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
 .nueva-venta-content {
-  padding: 30px;
-  max-width: 1600px;
-  margin: 0 auto;
+  margin-left: 260px;
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
 }
 
 .nueva-venta-content h1 {

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from './Navbar';
+import Sidebar from './Sidebar';
 import { productosAPI, ventasAPI } from '../services/api';
+import Swal from 'sweetalert2';
 import './NuevaVenta.css';
 
 function NuevaVenta({ onLogout }) {
@@ -35,7 +36,12 @@ function NuevaVenta({ onLogout }) {
             : item
         ));
       } else {
-        alert('No hay suficiente stock');
+        Swal.fire({
+          icon: 'warning',
+          title: 'Stock insuficiente',
+          text: 'No hay suficiente stock disponible',
+          confirmButtonColor: '#3498db'
+        });
       }
     } else {
       setCarrito([...carrito, {
@@ -60,7 +66,12 @@ function NuevaVenta({ onLogout }) {
           : item
       ));
     } else {
-      alert('No hay suficiente stock');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Stock insuficiente',
+        text: 'No hay suficiente stock disponible',
+        confirmButtonColor: '#3498db'
+      });
     }
   };
 
@@ -70,7 +81,12 @@ function NuevaVenta({ onLogout }) {
 
   const procesarVenta = async () => {
     if (carrito.length === 0) {
-      alert('El carrito está vacío');
+      Swal.fire({
+        icon: 'info',
+        title: 'Carrito vacío',
+        text: 'Agrega productos al carrito antes de procesar la venta',
+        confirmButtonColor: '#3498db'
+      });
       return;
     }
 
@@ -83,12 +99,23 @@ function NuevaVenta({ onLogout }) {
         metodo_pago: metodoPago
       });
 
-      alert('Venta registrada exitosamente');
-      setCarrito([]);
-      navigate('/ventas');
+      Swal.fire({
+        icon: 'success',
+        title: '¡Venta exitosa!',
+        text: 'La venta se registró correctamente',
+        confirmButtonColor: '#27ae60'
+      }).then(() => {
+        setCarrito([]);
+        navigate('/ventas');
+      });
     } catch (error) {
       console.error('Error al procesar venta:', error);
-      alert('Error al procesar la venta');
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'No se pudo procesar la venta',
+        confirmButtonColor: '#e74c3c'
+      });
     }
   };
 
@@ -99,7 +126,7 @@ function NuevaVenta({ onLogout }) {
 
   return (
     <div className="nueva-venta">
-      <Navbar onLogout={onLogout} />
+      <Sidebar onLogout={onLogout} />
       <div className="nueva-venta-content">
         <h1>Nueva Venta</h1>
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './Navbar';
+import Sidebar from './Sidebar';
 import { ventasAPI } from '../services/api';
 import './Ventas.css';
 
@@ -31,7 +31,7 @@ function Ventas({ onLogout }) {
 
   return (
     <div className="ventas">
-      <Navbar onLogout={onLogout} />
+      <Sidebar onLogout={onLogout} />
       <div className="ventas-content">
         <h1>Historial de Ventas</h1>
 

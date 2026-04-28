@@ -31,7 +31,8 @@ export const productosAPI = {
     create: (data) => api.post('/productos', data),
     update: (id, data) => api.put(`/productos/${id}`, data),
     delete: (id) => api.delete(`/productos/${id}`),
-    getStockBajo: () => api.get('/productos/alertas/stock-bajo')
+    getStockBajo: () => api.get('/productos/alertas/stock-bajo'),
+    getMasVendidos: () => api.get('/productos/mas-vendidos')
 };
 
 export const ventasAPI = {

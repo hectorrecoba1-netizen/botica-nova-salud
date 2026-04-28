@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './Navbar';
+import Sidebar from './Sidebar';
 import { productosAPI, categoriasAPI } from '../services/api';
+import Swal from 'sweetalert2';
 import './Productos.css';
 
 function Productos({ onLogout }) {
@@ -74,12 +75,35 @@ function Productos({ onLogout }) {
   };
 
   const handleDelete = async (id) => {
-    if (window.confirm('¿Está seguro de eliminar este producto?')) {
+    const result = await Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Esta acción eliminará el producto',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#e74c3c',
+      cancelButtonColor: '#95a5a6',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    });
+
+    if (result.isConfirmed) {
       try {
         await productosAPI.delete(id);
         loadProductos();
+        Swal.fire({
+          icon: 'success',
+          title: 'Eliminado',
+          text: 'El producto fue eliminado correctamente',
+          confirmButtonColor: '#27ae60'
+        });
       } catch (error) {
         console.error('Error al eliminar producto:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'No se pudo eliminar el producto',
+          confirmButtonColor: '#e74c3c'
+        });
       }
     }
   };
@@ -100,7 +124,7 @@ function Productos({ onLogout }) {
 
   return (
     <div className="productos">
-      <Navbar onLogout={onLogout} />
+      <Sidebar onLogout={onLogout} />
       <div className="productos-content">
         <div className="productos-header">
           <h1>Gestión de Productos</h1>
