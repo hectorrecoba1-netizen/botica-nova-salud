@@ -61,13 +61,13 @@ Sistema web fullstack para la gestión integral de inventario, ventas y atenció
 
 ### 1. Descargar el proyecto
 
-Si tienes el proyecto en GitHub:
+Clona el repositorio desde GitHub:
 ```bash
-git clone <url-del-repositorio>
-cd entregable1
+git clone https://github.com/TU_USUARIO/botica-nova-salud.git
+cd botica-nova-salud
 ```
 
-Si lo tienes localmente, simplemente navega a la carpeta del proyecto.
+O descarga el ZIP directamente desde GitHub.
 
 ### 2. Configurar la Base de Datos
 
