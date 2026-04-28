@@ -1,0 +1,174 @@
+.nueva-venta-content {
+  padding: 30px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.nueva-venta-content h1 {
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+.venta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.productos-section,
+.carrito-section {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.productos-section h2,
+.carrito-section h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.productos-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.producto-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.producto-card h3 {
+  font-size: 16px;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.producto-card p {
+  font-size: 14px;
+  color: #666;
+  margin: 5px 0;
+}
+
+.btn-add {
+  width: 100%;
+  padding: 8px;
+  background: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn-add:hover {
+  background: #229954;
+}
+
+.carrito-table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.carrito-table th,
+.carrito-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.carrito-table th {
+  background: #ecf0f1;
+  font-weight: 600;
+}
+
+.cantidad-input {
+  width: 60px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.btn-remove {
+  padding: 5px 10px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.btn-remove:hover {
+  background: #c0392b;
+}
+
+.venta-total {
+  text-align: right;
+  margin: 20px 0;
+  padding: 15px;
+  background: #ecf0f1;
+  border-radius: 5px;
+}
+
+.venta-total h3 {
+  color: #2c3e50;
+  font-size: 24px;
+}
+
+.metodo-pago {
+  margin: 20px 0;
+}
+
+.metodo-pago label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.metodo-pago select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.btn-procesar {
+  width: 100%;
+  padding: 15px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-procesar:hover {
+  background: #2980b9;
+}
+
+@media (max-width: 1024px) {
+  .venta-grid {
+    grid-template-columns: 1fr;
+  }
+}
