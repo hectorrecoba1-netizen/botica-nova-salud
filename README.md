@@ -91,7 +91,7 @@ DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=
 DB_NAME=nova_salud
-JWT_SECRET=tu_clave_secreta_super_segura_2024
+JWT_SECRET=tu_clave
 ```
 
 ### 4. Configurar el Frontend
