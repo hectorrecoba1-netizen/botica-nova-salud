@@ -26,26 +26,26 @@ Sistema web fullstack para la gestión integral de inventario, ventas y atenció
 
 ## Características Principales
 
-✅ **Gestión de Inventario**
+ **Gestión de Inventario**
 - Registro y actualización de productos
 - Control de stock en tiempo real
 - Alertas automáticas de stock bajo
 - Categorización de productos
 - Códigos de producto de 6 dígitos
 
-✅ **Sistema de Ventas**
+ **Sistema de Ventas**
 - Carrito de compras intuitivo
 - Registro de ventas con detalle
 - Múltiples métodos de pago (efectivo, tarjeta, transferencia)
 - Historial completo de ventas
 - Actualización automática de inventario
 
-✅ **Panel de Control**
+ **Panel de Control**
 - Dashboard con estadísticas en tiempo real
 - Visualización de alertas de stock
 - Accesos rápidos a funciones principales
 
-✅ **Seguridad**
+ **Seguridad**
 - Autenticación con JWT
 - Roles de usuario (admin, vendedor)
 - Rutas protegidas
